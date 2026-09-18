@@ -33,7 +33,7 @@
               │                  → 以音高比例搬移諧波細結構、共振峰扭曲
               │                  → 套用「風格包絡 − 講者包絡」× 強度、氣音、閘門
               │                  → 每幀能量比對，保持音量一致
-              └─ synthesize.wgsl 共軛鏡射 → IFFT → Hann 合成視窗
+              └─ synthesize.wgsl 共輝鏡射 → IFFT → Hann 合成視窗
               │
               ▼ 重疊相加（75%）
         AudioWorklet 環形緩衝 ─► 喇叭 / 虛擬音效裝置 / WAV 錄製
@@ -78,7 +78,7 @@ npx serve out         # 本機預覽正式版
 
 正式站：<https://google-fb.github.io/webgpu-voice-changer/>
 
-來源儲存庫：[google-fb/webgpu-voice-changer](https://github.com/google-fb/webgpu-voice-changer)（公開）。推送到 `main` 後，`.github/workflows/deploy-pages.yml` 會靜態匯出並部署。`NEXT_PUBLIC_BASE_PATH=/webgpu-voice-changer` 會寫進資源路徑與 AudioWorklet 位址。
+來源儲存庫：[google-fb/webgpu-voice-changer](https://github.com/google-fb/webgpu-voice-changer)（公開）。使用者網站 [google-fb/google-fb.github.io](https://github.com/google-fb/google-fb.github.io) 的 Pages workflow 會 checkout 此儲存庫，以 `NEXT_PUBLIC_BASE_PATH=/webgpu-voice-changer` 靜態匯出，並發佈到上述路徑。儲存庫內的 `.github/workflows/deploy-pages.yml` 也可在 Settings → Pages → Source 選 GitHub Actions 後，直接當成專案站部署。
 
 若要自己接 Pages：
 
