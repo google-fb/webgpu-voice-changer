@@ -12,7 +12,7 @@
 
 - **風格擷取**：GPU 分析音高軌跡、有聲/無聲判定、倒頻譜平滑的頻譜包絡，得到中位音高、音域（P10–P90）、亮度與音色指紋，並以圖表呈現。
 - **即時變聲**：相位聲碼器移調 + 共振峰縮放 + 音色轉換（角色平均頻譜 − 講者平均頻譜）+ 噪音閘門 + 氣音；語調起伏可從 0（機器人單音）到 160%。
-- **內建預設**：動漫少女、元氣少年、成熟御姐、低沈魔王、沙啞大叔、花栗鼠、巨人、機器人、幽靈。
+- **內建預設**：動漫少女、元氣少年、成熟御姐、低沉魔王、沙啞大叔、花栗鼠、巨人、機器人、幽靈。
 - **我的聲音校正**：記住講者的中位音高與音色，存在 localStorage。
 - **離線試聽**：把一段錄音以目前參數在 GPU 上一次渲染完成，可播放與下載 WAV。
 - **實況導流**：可選擇輸入/輸出裝置（`AudioContext.setSinkId`），輸出至 VB-Cable / VoiceMeeter 等虛擬裝置。
@@ -33,10 +33,10 @@
               │                  → 以音高比例搬移諧波細結構、共振峰扭曲
               │                  → 套用「風格包絡 − 講者包絡」× 強度、氣音、閘門
               │                  → 每幀能量比對，保持音量一致
-              └─ synthesize.wgsl 共輝鏡射 → IFFT → Hann 合成視窗
+              └─ synthesize.wgsl 共輈鏡射 → IFFT → Hann 合成視窗
               │
               ▼ 重疊相加（75%）
-        AudioWorklet 環形緩衝 ─► 喇叭 / 虛擬音效裝置 / WAV 錄製
+        AudioWorklet 環形緩衝 ─► 喊叭 / 虛擬音效裝置 / WAV 錄製
 ```
 
 - FFT 在單一 workgroup 內用 16 KiB workgroup memory 完成（剛好是 WebGPU 預設上限），一個 workgroup 處理一個 STFT 幀，離線分析時數百幀平行。
@@ -78,7 +78,7 @@ npx serve out         # 本機預覽正式版
 
 正式站：<https://google-fb.github.io/webgpu-voice-changer/>
 
-來源儲存庫：[google-fb/webgpu-voice-changer](https://github.com/google-fb/webgpu-voice-changer)（公開）。使用者網站 [google-fb/google-fb.github.io](https://github.com/google-fb/google-fb.github.io) 的 Pages workflow 會 checkout 此儲存庫，以 `NEXT_PUBLIC_BASE_PATH=/webgpu-voice-changer` 靜態匯出，並發佈到上述路徑。儲存庫內的 `.github/workflows/deploy-pages.yml` 也可在 Settings → Pages → Source 選 GitHub Actions 後，直接當成專案站部署。
+來源儲存庫：[google-fb/webgpu-voice-changer](https://github.com/google-fb/webgpu-voice-changer)（公開）。使用者網站 [google-fb/google-fb.github.io](https://github.com/google-fb/google-fb.github.io) 的 Pages workflow 會 checkout 此儲存庫，以 `NEXT_PUBLIC_BASE_PATH=/webgpu-voice-changer` 靜態匯出，並發佈到上述路徑（麥克風與 WebGPU 需要這層 HTTPS）。儲存庫內的 `.github/workflows/deploy-pages.yml` 也可在 Settings → Pages → Source 選 GitHub Actions 後，直接當成專案站部署。
 
 若要自己接 Pages：
 
