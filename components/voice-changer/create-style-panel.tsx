@@ -125,7 +125,7 @@ export function CreateStylePanel({ engine, state, profile, onSave }: CreateStyle
 
   const save = useCallback(() => {
     if (!features || !clip) return;
-    const hasLead = features.medianF0 > 0;
+    const hasPitch = features.medianF0 > 0;
     const userF0 = profile?.medianF0 || 0;
     // Higher voices usually come with a shorter vocal tract; start from a mild
     // formant shift derived from the pitch ratio and let the user fine-tune.

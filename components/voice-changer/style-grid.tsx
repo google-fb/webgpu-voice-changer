@@ -53,7 +53,7 @@ export function StyleGrid({ styles, selectedId, onSelect, onDelete, onCreate }: 
           className="flex w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-white/15 bg-white/[0.02] px-4 py-8 text-center text-sm text-muted-foreground transition hover:border-primary/50 hover:text-foreground"
         >
           <UserRound className="size-6" />
-          <span>還沒有自訂風格。上傳或錄一段 3–15 秒的角色語音，就能�訂風格。上傳或錄一段 3–15 秒的角色語音，就能擷取它的音高與音色。</span>
+          <span>還沒有自訂風格。上傳或錄一段 3–15 秒的角色語音，就能擷取它的音高與音色。</span>
         </button>
       )}
 
